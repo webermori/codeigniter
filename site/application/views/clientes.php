@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
-			<h1>Servicos</h1>
+			<h1>Clientes</h1>
 
 		</div>
 

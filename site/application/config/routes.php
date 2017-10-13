@@ -53,8 +53,11 @@ $route['default_controller'] = 'pagina';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['sobre'] = 'pagina/sobre';
 $route['clientes'] = 'pagina/clientes';
 $route['servicos'] = 'pagina/servicos';
 $route['contato'] = 'pagina/contato';
-$route['sobre'] = 'pagina/sobre';
-$route[''] = 'pagina/';
+$route['post'] = 'pagina';
+$route['post/(:num)'] = 'pagina/post/$1';
+$route['login'] = 'setup/login';
+$route['painel'] = 'setup/login';
