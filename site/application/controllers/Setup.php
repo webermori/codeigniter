@@ -8,16 +8,30 @@ class Setup extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('option_model', 'option');
 	}
 
 	public function index()
 	{
-		echo "string";
+		if ($this->option->get_option('setup_executado') == 1):
+			//setup ok, mostrar tela para editar dados de setup
+			redirect('setup/alterar','refresh');
+		else:
+			//não instalado, mostrar tela de setup
+			redirect('setup/instalar','refresh');
+		endif;
 	}
 
-	public function login()
+	public function instalar() 
 	{
-		echo "Login";
-	}
+		if($this->option->get_option('setup_executado') == 1):
+			//setup ok, mostrar tela para editar dados do setup
+			redirect('setup/alterar','refresh');
+		endif;
 
+		//carrega view
+		$dados['titulo'] = 'Setup do sistema';
+		$dados['h2'] = 'Setup do sistema';
+		$this->load->view('painel/setup', $dados);
+	}
 }
