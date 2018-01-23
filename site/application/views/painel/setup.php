@@ -9,11 +9,15 @@
 </head>
 <body>
 	<div class="columns">
-		<div class="column is-3">&nbsp;</div>
-		<div class="column is-6">
+		<div class="column is-4">&nbsp;</div>
+		<div class="column is-4">
 			<h2 class="title "><?php echo $h2 ?></h2>
 
-			<?php echo form_open(); ?>
+			<?php 
+				if ($msg = get_msg()):
+					echo '<div class="message is-danger"><div class="message-body">'.$msg.'</div></div>';
+				endif;
+			echo form_open(); ?>
 			<div class="field">
 				<label class="label"><?php echo form_label('Nome para Login:','login'); ?></label>
 				<div class="control">
@@ -48,6 +52,6 @@
 
 			<?php echo form_close(); ?>
 		</div>
-		<div class="column is-3">&nbsp;</div>
+		<div class="column is-4">&nbsp;</div>
 	</div>		
 </body></html>

@@ -29,6 +29,21 @@ class Setup extends CI_Controller {
 			redirect('setup/alterar','refresh');
 		endif;
 
+		//Regras de Validação
+		$this->form_validation->set_rules('login', 'NOME', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('email', 'EMAIL', 'trim|required|valid_email');
+		$this->form_validation->set_rules('senha', 'SENHA', 'trim|required|min_length[6]');
+		$this->form_validation->set_rules('senha2', 'REPITA A SENHA', 'trim|required|min_length[6]|matches[senha]');
+
+		//Verifica validação
+		if ($this->form_validation->run() == FALSE) {
+			if (validation_errors()):
+				set_msg(validation_errors());
+			endif;
+		} else {
+			set_msg('<p>Validação OK!</p>');
+		}
+
 		//carrega view
 		$dados['titulo'] = 'Setup do sistema';
 		$dados['h2'] = 'Setup do sistema';
